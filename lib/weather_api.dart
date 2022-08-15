@@ -47,4 +47,19 @@ class WeatherApi {
     Map<String, dynamic> temperature = json['main'];
     return temperature;
   }
+
+  Future<String> getIcon(String query) async {
+    Uri url = Uri.parse(
+        'https://api.openweathermap.org/data/2.5/weather?q=$query&appid=95114a1e948559e010396b4debdf1672');
+    http.Response response = await http.get(url);
+
+    String jsonString = response.body;
+
+    Map<String, dynamic> json = jsonDecode(jsonString);
+    if (json['icon'] == null) {
+      return '';
+    }
+    String icon = json['icon'];
+    return icon;
+  }
 }
