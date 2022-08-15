@@ -1,21 +1,22 @@
 class Weather {
-  final String weather;
-  final String cityName;
-  final num temp;
+  List weather;
+  final Map<String, dynamic> main;
+  final String description;
   final String icon;
 
-  Weather(
-      {required this.weather,
-      required this.cityName,
-      required this.temp,
-      required this.icon});
+  Weather({
+    required this.weather,
+    required this.main,
+    required this.description,
+    required this.icon});
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
-      weather: json['weather']['main'] as String,
-      cityName: json['name'] as String,
-      temp: json['main']['temp'] as num,
-      icon: json['weather']['icon'] as String,
+      weather: json['weather'] as List,
+      main: json['main'] as Map<String, dynamic>,
+      description: json['description'],
+      icon: json['icon'],
     );
   }
 }
+

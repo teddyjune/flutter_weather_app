@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app/weather_search_screen.dart';
+import 'package:weather_app/weather_screen.dart';
 import 'package:weather_app/weather_view_model.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: WeatherSearchScreen(),
+      home: WeatherScreen(),
     );
   }
 }

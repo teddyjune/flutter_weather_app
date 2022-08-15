@@ -7,27 +7,23 @@ class WeatherApi {
     Uri url = Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?q=$query&appid=95114a1e948559e010396b4debdf1672');
     http.Response response = await http.get(url);
-
     String jsonString = response.body;
-
     Map<String, dynamic> json = jsonDecode(jsonString);
     if (json['name'] == null) {
       return '';
     }
-    String cityName = json['name'];
+    String cityName = json['name'] as String;
     return cityName;
   }
 
-  Future<Iterable> getWeather(String query) async {
+  Future<List<Weather>> getWeather(String query) async {
     Uri url = Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?q=$query&appid=95114a1e948559e010396b4debdf1672');
     http.Response response = await http.get(url);
-
     String jsonString = response.body;
-
     Map<String, dynamic> json = jsonDecode(jsonString);
     if (json['weather'] == null) {
-      return {};
+      return List.empty();
     }
     Iterable weather = json['weather'];
     return weather.map((e) => Weather.fromJson(e)).toList();
