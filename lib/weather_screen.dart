@@ -49,9 +49,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
         ),
         Column(
           children: [
-            Text(viewModel.myWeather.weather),
-            Text(viewModel.myWeather.cityName),
-            Text(viewModel.convertTemp(viewModel.myWeather.temp)),
+            Text(viewModel.myWeather.cityName,
+                style: const TextStyle(fontSize: 50)),
+            Image.network(
+              viewModel.myWeather.icon,
+            ),
+            Text(
+              viewModel.myWeather.weather,
+              style: const TextStyle(fontSize: 30),
+            ),
+            Text('${viewModel.convertTemp(viewModel.myWeather.temp)}°',
+                style: const TextStyle(fontSize: 30)),
           ],
         )
       ]),

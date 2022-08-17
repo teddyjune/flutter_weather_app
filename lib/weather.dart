@@ -14,7 +14,7 @@ class Weather {
     return Weather(
       weather: json['weather'][0]['main'] as String,
       cityName: json['name'] as String,
-      icon: json['weather']['icon'] as String,
+      icon: 'https://openweathermap.org/img/w/'+ (json['weather'][0]['icon'] as String) + '.png',
       temp: json['main']['temp'] as num,
     );
   }
