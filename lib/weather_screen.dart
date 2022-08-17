@@ -1,8 +1,5 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app/weather.dart';
 import 'package:weather_app/weather_view_model.dart';
 
 class WeatherScreen extends StatefulWidget {
@@ -50,23 +47,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
             ),
           ),
         ),
-        Expanded(
-          child: ListView(
-            children: viewModel.weatherList.map((Weather weatherList) {
-              return Column(
-                children: [
-                  Text(
-                    viewModel.cityName,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Text('${viewModel.getCurrentTemp()}°',
-                      style: const TextStyle(fontSize: 25)),
-                ],
-              );
-            }).toList(),
-          ),
-        ),
+        Column(
+          children: [
+            Text(viewModel.myWeather.weather),
+            Text(viewModel.myWeather.cityName),
+            Text(viewModel.convertTemp(viewModel.myWeather.temp)),
+          ],
+        )
       ]),
     );
   }

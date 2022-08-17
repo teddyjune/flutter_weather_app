@@ -10,6 +10,6 @@ class WeatherApi {
 
     String jsonString = response.body;
     Map<String, dynamic> json = jsonDecode(jsonString);
-    return Weather.fromJson(json);
+    return Weather.fromJson(json); //통짜로 가져옴.
   }
 }
