@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app/weather_screen.dart';
-import 'package:weather_app/weather_view_model.dart';
+import 'package:weather_app/ui/weather_screen.dart';
+import 'package:weather_app/ui/weather_view_model.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(

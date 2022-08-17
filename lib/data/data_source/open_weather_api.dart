@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:weather_app/weather.dart';
+import 'package:weather_app/data/model/weather.dart';
 
-class WeatherApi {
+class OpenWeatherApi {
   Future<Weather> getWeatherInfo(String query) async {
     Uri url = Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?q=$query&appid=95114a1e948559e010396b4debdf1672');
@@ -10,6 +10,6 @@ class WeatherApi {
 
     String jsonString = response.body;
     Map<String, dynamic> json = jsonDecode(jsonString);
-    return Weather.fromJson(json); //통짜로 가져옴.
+    return Weather.fromJson(json); //통째로 가져옴.
   }
 }

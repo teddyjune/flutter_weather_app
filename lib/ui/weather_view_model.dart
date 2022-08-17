@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/weather.dart';
-import 'package:weather_app/weather_api.dart';
+import 'package:weather_app/data/model/weather.dart';
+import 'package:weather_app/data/repository/weather_repository.dart';
 
 class WeatherViewModel extends ChangeNotifier {
-  final _weatherApi = WeatherApi();
+  final _weatherRepository = WeatherRepository();
   Weather myWeather = Weather(weather: '', cityName: '', icon: '', temp: 0);
   bool isLoading = true;
 
@@ -14,7 +14,7 @@ class WeatherViewModel extends ChangeNotifier {
   void fetchWeatherInfo(String query) async {
     isLoading = true;
     notifyListeners();
-    myWeather = await _weatherApi.getWeatherInfo(query);
+    myWeather = await _weatherRepository.getWeatherInfo(query);
     isLoading = false;
     notifyListeners();
   }
