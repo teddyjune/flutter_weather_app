@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/weather.dart';
@@ -60,7 +62,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   ),
                   Text('${viewModel.getCurrentTemp()}°',
                       style: const TextStyle(fontSize: 25)),
-                  Text(weatherList.)
                 ],
               );
             }).toList(),
