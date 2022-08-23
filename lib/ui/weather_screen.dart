@@ -52,9 +52,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
             : Column(
                 children: [
                   Text(viewModel.myWeather.cityName,
-                      style: const TextStyle(fontSize: 50)),
+                      style: const TextStyle(fontSize: 40)),
                   Image.network(
-                    viewModel.myWeather.icon,
+                    'http://openweathermap.org/img/w/${viewModel.myWeather.icon}',
                   ),
                   Text(
                     viewModel.myWeather.weather,
