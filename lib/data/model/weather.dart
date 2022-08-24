@@ -23,7 +23,7 @@ class Weather with _$Weather {
 //   final String icon;
 //   final num temp;
 //
-//   Weather(
+//   Weather( 
 //       {required this.weather,
 //       required this.cityName,
 //       required this.icon,
