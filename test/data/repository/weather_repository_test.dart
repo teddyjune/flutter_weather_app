@@ -1,21 +1,21 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart';
-import 'package:http/testing.dart';
-import 'package:weather_app/data/data_source/open_weather_api_impl.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+import 'package:weather_app/data/data_source/open_weather_api.dart';
+import 'package:weather_app/data/data_source/weather_dto.dart';
 import 'package:weather_app/data/repository/weather_repository.dart';
 
 import '../data_source/open_weather_api_impl_test.dart';
+import 'weather_repository_test.mocks.dart';
 
+@GenerateMocks([OpenWeatherApi]) //Mokito 사용할 때 사용
 void main() {
   test('날씨 정보 받아오기', () async {
-    final mockClient = MockClient((request) async {
-      if (request.url.toString() ==
-          'https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=95114a1e948559e010396b4debdf1672') {
-        return Response(fakeData, 200);
-      }
-      return Response('error', 404);
-    });
-    final api = OpenWeatherApiImpl(client: mockClient);
+    final api = MockOpenWeatherApi(); //빈 값이어서 정의해줘야 한다.
+    when(api.getWeatherInfo('seoul'))
+        .thenAnswer((_) async => WeatherDto.fromJson(jsonDecode(fakeData)));
     final repository = WeatherRepository(api);
     final weather = await repository.getWeatherInfo('seoul');
     expect(weather.cityName, 'Seoul');
