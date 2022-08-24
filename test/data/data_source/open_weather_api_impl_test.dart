@@ -17,6 +17,8 @@ void main() {
     WeatherDto weather = await api.getWeatherInfo('seoul');
     expect(weather.name, 'Seoul');
     expect(weather.weather![0].main, 'Clouds');
+    expect(weather.main!.temp, 299.36);
+
   });
 }
 

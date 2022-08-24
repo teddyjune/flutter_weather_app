@@ -10,6 +10,7 @@ class OpenWeatherApiImpl implements OpenWeatherApi {
   OpenWeatherApiImpl({http.Client? client})
       : _client = (client ?? http.Client());
 
+  @override
   Future<WeatherDto> getWeatherInfo(String query) async {
     Uri url = Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?q=$query&appid=95114a1e948559e010396b4debdf1672');

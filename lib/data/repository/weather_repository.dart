@@ -3,7 +3,7 @@ import 'package:weather_app/data/model/weather.dart';
 import '../data_source/open_weather_api.dart';
 
 class WeatherRepository {
-  //추상 타입이 되면서 독립적이게 된다.
+  //추상 타입이 되면서 독립적이게 된다. 의존성이 사라지면 import가 없다.
   final OpenWeatherApi _api;
 
   WeatherRepository(this._api);
