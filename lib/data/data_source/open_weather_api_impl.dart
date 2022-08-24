@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:weather_app/data/data_source/WeatherDto.dart';
 import 'package:weather_app/data/data_source/open_weather_api.dart';
+import 'package:weather_app/data/data_source/weather_dto.dart';
 
 class OpenWeatherApiImpl implements OpenWeatherApi {
   Future<WeatherDto> getWeatherInfo(String query) async {

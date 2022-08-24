@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/data/model/weather.dart';
 import 'package:weather_app/data/repository/weather_repository.dart';
 
+import '../data/data_source/open_weather_api_impl.dart';
+
 class WeatherViewModel extends ChangeNotifier {
-  final _weatherRepository = WeatherRepository();
-  Weather myWeather = Weather(weather: '', cityName: '', icon: '', temp: 0);
+  final _weatherRepository = WeatherRepository(OpenWeatherApiImpl());
+  Weather myWeather = const Weather(weather: '', cityName: '', icon: '', temp: 0);
   bool isLoading = true;
 
   WeatherViewModel() {
